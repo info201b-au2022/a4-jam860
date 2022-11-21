@@ -209,7 +209,7 @@ map_inequality <- function() {
     coord_map() +
     scale_fill_continuous(limits = c(0, max(map_data$black_jail_pop)), na.value = "white", low = "green", high = "pink") +
     labs(axes = FALSE, title = "Incarceration Rates for Black Americans across the U.S. (2018)",
-         caption = "This graph represents the top 100 counties which have \nthe highest rates of incarceration for Black Americans in 2018.") +
+         caption = "This graph represents the top 200 counties which have \nthe highest rates of incarceration for Black Americans in 2018.") +
     theme(axis.title.x=element_blank(),
           axis.text.x=element_blank(),
           axis.ticks.x=element_blank(),
