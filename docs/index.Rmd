@@ -1,45 +1,63 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
+title: "Systems and Policies That Continue to Fail People of Color: Incarceration Edition"
 author: "James Nguyen"
-date: '2022-11-01'
+date: '2022-11-20'
 output: html_document
 ---
 
-```{r echo=FALSE, eval=TRUE, message=FALSE}
+```{r setup, include=FALSE}
 source("../source/a4-helpers.R")
 source("../source/analysis.R")
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
-## Abstract 
-[TODO: Include a short abstract (about 50 words)]
+## Abstract
+This study looks at the incarceration rates between people of color and those who are white. This data looks at a variety of demographics of those that are incarcerated such as race, gender, and age. This report will primarily explore how people of different races are impacted by incarceration rates in the United States.
 
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
 
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
+## Introduction
+In this report, we will be identifying the injustices and the inequities that people of color often face when incarcerated. We will first look the overall picture of incarceration rates and see the steady growth of people going to jail between 1970 to 2018. In addition, we will be identifying how different races are impacted in different cities through the use of data visualizations. When analyzing some of the results, we notice that people of color are the direct stakeholders, since they are more often punished by this system of injustice. Especially when looking at the major cities in the United States, Black Americans are punished more harshly compared to those who are white. The indirect stakeholders would be people working in the legal system such as judges or those working on law makers. Law makers can change some of these inequitable laws which can potentially help those experiencing those injustices. In hopes of fighting these inequities, we hope that this data helps to motivate people to push for changes in policy that disproportionately impact people of color.   
 
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
 
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
+## Data Summary
+I wanted to look specifically at California state and see which county had the highest number of people in these jails. After gathering some data, I noticed that `r highest_jail()` was the jail with the highest number of incarcerated people. When analyzing further at the rates of incarceration for Black Americans, I noticed that there were about `r black_jail_pop_2018()` Black Americans in 2018 while there were about `r white_jail_pop_2018()` White Americans. Upon further inspection, I also noticed that there were about `r latinx_jail_pop_2018()` LatinX people in `r highest_jail()`'s jail. We can see that people of color make up a large proportion of this county's jail, exemplifying how people of color are often incarcerated at much higher rates than those that are white.   
+<br />
+
+## Growth of the U.S. Prison Population
+
+```{r chart1, include = TRUE, echo = FALSE}
+plot(plot_jail_pop_for_us())
 ```
 
-## Introduction 
-[TODO]
+One of the questions that people may be wondering is "how has the population of U.S. prisons changed throughout the years?" When analyzing the growth of US prisons throughout the years, we notice that they have been growing an increasing rate. There is a slight plateau when looking at the most years, but it seems that the growth of U.S. prisons will continue if nothing is changed.  
+<br />
 
-## Data Summary 
-[TODO]
+## Growth of Prison Population by State 
 
-[TODO ... other sections ... See Canvas for details]
+```{r chart2, include = TRUE, echo = FALSE}
+plot(plot_jail_pop_by_states(c("WA", "OR", "CA")))
+```
 
-_All the very best with your work!_
+Another question that people may have would be "how has specific state's prisons changed throughout the years?" When looking closely at Washington, Oregon and California, we notice that California's incarceration rate increased at a tremendously high rate between 1975 and the year 2000. Since year 2000, the number of people incarcerated in California have steadily stayed at a high number. I wanted to show California because it had one of the highest rates of incarceration people in general, and for people of color. We can further look at California's laws and how it may unfairly punish the BIPOC community. For Oregon and Washington, the incarcerations has only been slowly increasing. I showed Oregon and Washington because they are cities that many students at the University of Washington are familiar. I also wanted to show how the incarceration could perhaps be different for people of color living in these states due to some of the laws in place for Washington or Oregon.  
+<br />
+
+## Incarceration in Different Counties for Black Americans
+
+```{r chart3, include = TRUE, echo = FALSE}
+plot(plot_Seattle_vs_Los_Angeles_black_pop())
+```
+
+After analyzing the general jail population in Washington, Oregon, California, one may wonder "what has been the general trend of the incarceration rates for Black Americans in King County and Los Angeles County?" I notice that between 1975 and 2000, rates of incarceration for Black Americans had a significant jump. It is very strange to see such a large number of Black Americans being placed into these jails and seeing that they still make up a large portion of Los Angeles County's jails. Even though this sudden jump may have decreased a little, the overall trend is that many Black Americans are still being incarcerated at high rates throughout the years. This further proves how laws in California have negatively impacted Black Americans and how some of the policies need to change.  
+<br />
+
+
+## Highest rates of incarceration for Black Americans
+
+```{r chart4, include = TRUE, echo = FALSE}
+plot(map_inequality())
+```
+
+One last question that one may be wondering is "which counties have the highest number of incarceration for Black Americans?" When analyzing the graph, one will notice that high rates of incarcerations for Black Americans are in major cities. For example, we see that San Fransico, California; Los Angeles, California; Chicago, Illinois and many others have high rates of incarceration for Black Americans. These high rates of incarceration can explained by policies that punish Black Americans at a significantly higher rate. In addition, we will notice that these more punishing policies are mostly in neighborhoods that consist of people of color. It is clear that there has been a lot of inequities in the incarceration rates for people of color.
+
+
 
