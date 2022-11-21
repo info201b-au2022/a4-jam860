@@ -1,6 +1,6 @@
 ---
 title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
+author: "James Nguyen"
 date: '2022-11-01'
 output: html_document
 ---
