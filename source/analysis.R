@@ -44,9 +44,8 @@ highest_jail <- function() {
     summarize(total_jail_pop_county = max(total_jail_pop)) %>%
     filter(total_jail_pop_county == max(total_jail_pop_county, na.rm = TRUE)) %>%
     pull(county_name)
-  return(data)   
+  return(prettyNum(data, big.mark = ",", scientific = FALSE))   
 }
-
 
 black_jail_pop_2018 <- function() {
   data <- data %>% 
@@ -54,7 +53,7 @@ black_jail_pop_2018 <- function() {
     filter(year == max(year)) %>%
     filter(county_name == highest_jail()) %>%
     pull(black_jail_pop)
-  return(data)   
+  return(prettyNum(data, big.mark = ",", scientific = FALSE))   
 }
 
 white_jail_pop_2018 <- function() {
@@ -63,7 +62,7 @@ white_jail_pop_2018 <- function() {
     filter(year == max(year)) %>%
     filter(county_name == highest_jail()) %>%
     pull(white_jail_pop)
-  return(data)   
+  return(prettyNum(data, big.mark = ",", scientific = FALSE))     
 }
 
 latinx_jail_pop_2018 <- function() {
@@ -72,9 +71,8 @@ latinx_jail_pop_2018 <- function() {
     filter(year == max(year)) %>%
     filter(county_name == highest_jail()) %>%
     pull(latinx_jail_pop)
-  return(data)   
+  return(prettyNum(data, big.mark = ",", scientific = FALSE))     
 }
-
 
 
 summary_info <- list(
@@ -165,8 +163,8 @@ Seattle_vs_Los_Angeles_black_pop <- function() {
 plot_Seattle_vs_Los_Angeles_black_pop <- function () {
   p  <- ggplot(Seattle_vs_Los_Angeles_black_pop(), aes(fill=county_name, y=change_per_year_black_pop, x=year)) + 
     geom_bar(position="dodge", stat="identity")  +
-    labs(y = "Total Jail Population", x = "Year", title = "Increase of incarcerations for Black Americans (King County vs Los Angeles County)", 
-         caption = "This graphs represents a surprisingly large increasein the number of Black Americans \nin Los Angeles county's jail compared to King county's jail between 1975-2018.") 
+    labs(y = "Total Jail Population", x = "Year", title = "Increase of Incarcerations for Black Americans", subtitle = "(King County vs Los Angeles County)", 
+         caption = "This graphs represents a surprisingly large increase in the number of Black Americans \nin Los Angeles county's jail compared to King county's jail between 1975-2018.") 
   
   return(p)
 }
